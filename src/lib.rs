@@ -2,6 +2,15 @@
 
 macro_rules! impl_factorial {
 	($t:ty, $n:ident) => {
+		/// [Factorial](https://en.wikipedia.org/wiki/Factorial), or number of arrangements
+		/// 
+		/// The number of possible arrangements for n items.
+		/// 
+		/// Eg.: for the 3 items ABC, the 6 possible arrangements are
+		///      ABC, BAC, BCA
+		///      ACB, CAB, CBA
+		/// 
+		/// So, 3! = 6
 		#[inline]
 		pub fn $n(n: $t) -> $t {
 			(1..=n).fold(1, |acc, v| acc * v)
@@ -74,6 +83,15 @@ fn test_double_factorial() {
 
 macro_rules! impl_sub_factorial {
 	($t:ty, $n:ident) => {
+		/// Subfactorial, or number [Derangement](https://en.wikipedia.org/wiki/Derangement)s
+		/// 
+		/// The number of possible derangements of items where each item cannot
+		/// be in its initial place.
+		/// 
+		/// Eg.: for the 3 items ABC, the 2 possible arrangements are
+		///      CAB, BCA
+		/// 
+		/// So, !3 = 2
 		#[inline]
 		pub fn $n(n: $t) -> $t {
 			match n {
@@ -237,9 +255,19 @@ macro_rules! impl_swinging_factorial {
 	($t:ty, $n:ident) => {
 		#[inline]
 		pub fn $n(n: $t) -> $t {
+			// reduction wizardry
+
+			// n! / floor(n/2)!²
+			// 5! / 2!² (ints are always floored)
+			// 5*4*3*2*1 / 2*1 * 2*1
+			// 5*4*3 / 2*1 (we can reduce the second half of the factorial sequence)
+
+			// this effectively gives us the first half of the factorial sequence
+			// devided by the second half
+
 			let half = n / 2;
 
-			(half+1..=n).fold(1, |acc, v| acc * v)
+			(half+1..=n).fold(1, |acc, v| acc * v) // (the sequence is inverted here)
 			/ (1..=half).fold(1, |acc, v| acc * v)
 		}
 	};
