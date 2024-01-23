@@ -34,5 +34,5 @@ pub fn swinging_factorial(c: &mut Criterion) {
 }
 
 
-criterion_group!(benches, swinging_factorial);
+criterion_group!(benches, factorial, double_factorial, sub_factorial, super_factorial_sloane, swinging_factorial);
 criterion_main!(benches);
