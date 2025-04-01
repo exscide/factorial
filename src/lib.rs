@@ -23,6 +23,7 @@ impl_factorial!(u16, factorial_u16);
 impl_factorial!(u32, factorial_u32);
 impl_factorial!(u64, factorial_u64);
 impl_factorial!(usize, factorial_usize);
+impl_factorial!(u128, factorial_u128);
 
 #[cfg(test)]
 #[test]
@@ -62,6 +63,7 @@ impl_double_factorial!(u16, double_factorial_u16);
 impl_double_factorial!(u32, double_factorial_u32);
 impl_double_factorial!(u64, double_factorial_u64);
 impl_double_factorial!(usize, double_factorial_usize);
+impl_double_factorial!(u128, double_factorial_u128);
 
 #[cfg(test)]
 #[test]
@@ -123,6 +125,7 @@ impl_sub_factorial!(i16, sub_factorial_i16);
 impl_sub_factorial!(i32, sub_factorial_i32);
 impl_sub_factorial!(i64, sub_factorial_i64);
 impl_sub_factorial!(isize, sub_factorial_isize);
+impl_sub_factorial!(i128, sub_factorial_i128);
 
 #[cfg(test)]
 #[test]
@@ -152,6 +155,7 @@ impl_super_factorial_sloane!(u16, super_factorial_sloane_u16);
 impl_super_factorial_sloane!(u32, super_factorial_sloane_u32);
 impl_super_factorial_sloane!(u64, super_factorial_sloane_u64);
 impl_super_factorial_sloane!(usize, super_factorial_sloane_usize);
+impl_super_factorial_sloane!(u128, super_factorial_sloane_u128);
 
 #[cfg(test)]
 #[test]
@@ -172,7 +176,7 @@ macro_rules! impl_super_factorial_pickover {
 		pub fn $n(n: $t) -> $t {
 			let fac = |i| (1..=i).fold(1, |acc, v| acc * v);
 			let pow = |base, ex| (1..ex).fold(base, |acc, _| acc * base);
-		
+
 			let nf = fac(n);
 			(1..nf).fold(nf, |acc, _| pow(nf, acc))
 		}
@@ -184,6 +188,7 @@ impl_super_factorial_pickover!(u16, super_factorial_pickover_u16);
 impl_super_factorial_pickover!(u32, super_factorial_pickover_u32);
 impl_super_factorial_pickover!(u64, super_factorial_pickover_u64);
 impl_super_factorial_pickover!(usize, super_factorial_pickover_usize);
+impl_super_factorial_pickover!(u128, super_factorial_pickover_u128);
 
 #[cfg(test)]
 #[test]
@@ -211,6 +216,8 @@ impl_exponential_factorial!(u16, exponential_factorial_u16);
 impl_exponential_factorial!(u32, exponential_factorial_u32);
 impl_exponential_factorial!(u64, exponential_factorial_u64);
 impl_exponential_factorial!(usize, exponential_factorial_usize);
+impl_exponential_factorial!(u128, exponential_factorial_u128);
+
 
 #[cfg(test)]
 #[test]
@@ -239,6 +246,7 @@ impl_hyper_factorial!(u16, hyper_factorial_u16);
 impl_hyper_factorial!(u32, hyper_factorial_u32);
 impl_hyper_factorial!(u64, hyper_factorial_u64);
 impl_hyper_factorial!(usize, hyper_factorial_usize);
+impl_hyper_factorial!(u128, hyper_factorial_u128);
 
 #[cfg(test)]
 #[test]
@@ -278,6 +286,7 @@ impl_swinging_factorial!(u16, swinging_factorial_u16);
 impl_swinging_factorial!(u32, swinging_factorial_u32);
 impl_swinging_factorial!(u64, swinging_factorial_u64);
 impl_swinging_factorial!(usize, swinging_factorial_usize);
+impl_swinging_factorial!(u128, swinging_factorial_u128);
 
 
 
